@@ -35,10 +35,11 @@
                 <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Introduction</h3>
 
-            <p><b>SWMIC</b> is a fast implementation of Smith-Waterman Algorithm on intel Xeon Phi Coprocessors.
-                The native mode reached 68.3 GCUPS on a Xeon Phi 7110p with env_nr FASTA database and P58229 query.
-                In offload mode swmic calculated 98 GCUPS on one Xeon Phi 7110p with single Xeon E5-2620, and swmic
-                supported for large databases like nr(19G) with fast IO device(ssd).
+            <p><b>SWMIC</b> is a fast implementation of Smith-Waterman algorithm performed on the Intel(R) MIC platform.
+                We achieved a speed of 68.3G CUPS (cell update per second) on a single Xeon Phi 7110p in native mode and
+                98G CUPS on a E5-2620 CPU with one Xeon Phi 7110p in offload mode processing query P58299 with database
+                env-nr_FASTA. Large databases like nr(19G) are supported at about 90 GCUPS using fast external storage
+                devices(e.g. SSD).
             </p>
 
             <h3>
@@ -65,37 +66,37 @@
                 For example, steps to run the query testRefSeq0511.txt to the database db.env_nr
                 with the default gap penalties and scoring matrix are as following:
                 <br>
-                <br>
-                <li>For native version:</li>
-                <br>
-                Step 1: Preproccess the database:
-                <br>
-                <code> ./makemicdb.out db.env_nr 244 </code>
-                <br>
-                [NOTE:] if your Xeon Phi has 61 cores, it is 244, if 60 cores it is 240.
-                <br>
-                Step 2: Upload the database and program to xeon phi:
-                <br>
-                <code>./scp db.env_nr.* blosum62.mat testRef* swmic.mic mic0:</code>
-                <br>
-                Step 3: Login xeon phi card:
-                <br>
-                <code>./ssh mic0</code>
-                <br>
-                Step 4: Run swmic on xeon phi:
-                <br>
-                <code>./swmic.mic  blosum62.mat testRefSeq0511.txt  db.env_nr</code>
-                <br>
-                <br>
-                <li>For offload version:</li>
-                <br>
-                Step 1: Preproccess the database:
-                <br>
-                <code>./makemicdb4.1.out db.env_nr</code>
-                <br>
-                Step 2: Run swmic:
-                <br>
-                <code>./swmic.mic  blosum62.mat testRefSeq1023.txt  db.env_nr</code>
+                
+            <li>For native version:</li>
+            <br>
+            Step 1: Preproccess the database:
+            <br>
+            <code> ./makemicdb.out db.env_nr 244 </code>
+            <br>
+            [NOTE:] if your Xeon Phi has 61 cores, it is 244, if 60 cores it is 240.
+            <br>
+            Step 2: Upload the database and program to xeon phi:
+            <br>
+            <code>./scp db.env_nr.* blosum62.mat testRef* swmic.mic mic0:</code>
+            <br>
+            Step 3: Login xeon phi card:
+            <br>
+            <code>./ssh mic0</code>
+            <br>
+            Step 4: Run swmic on xeon phi:
+            <br>
+            <code>./swmic.mic blosum62.mat testRefSeq0511.txt db.env_nr</code>
+            <br>
+            <br>
+            <li>For offload version:</li>
+            <br>
+            Step 1: Preproccess the database:
+            <br>
+            <code>./makemicdb4.1.out db.env_nr</code>
+            <br>
+            Step 2: Run swmic:
+            <br>
+            <code>./swmic.mic blosum62.mat testRefSeq1023.txt db.env_nr</code>
             </p>
 
             <h3>
@@ -109,9 +110,9 @@
                         class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
             <p>
-                <li>Author 1</li>
-                <li>Author 2</li>
-                <li>Authoe 3</li>
+            <li>Author 1</li>
+            <li>Author 2</li>
+            <li>Authoe 3</li>
             </p>
 
             <h3>
