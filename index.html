@@ -20,6 +20,7 @@
 <header>
     <div class="inner">
         <h1>SWMIC</h1>
+
         <h2>A fast Smith-Waterman Algorithm Implementation on Intel Xeon Phi Coprocessors.</h2>
         <a href="https://github.com/lazydomino/swmic" class="button">
             <small>View project on</small>
@@ -31,58 +32,90 @@
     <div class="inner clearfix">
         <section id="main-content">
             <h3>
-                <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span
+                <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Introduction</h3>
 
-            <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects.
-                Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer,
-                and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-            <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+            <p><b>SWMIC</b> is a fast implementation of Smith-Waterman Algorithm on intel Xeon Phi Coprocessors.
+                The native mode reached 68.3 GCUPS on a Xeon Phi 7110p with env_nr FASTA database and P58229 query.
+                In offload mode swmic calculated 98 GCUPS on one Xeon Phi 7110p with single Xeon E5-2620, and swmic
+                supported for large databases like nr(19G) with fast IO device(ssd).
+            </p>
 
             <h3>
-                <a name="designer-templates" class="anchor" href="#designer-templates"><span
+                <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Downloads</h3>
 
-            <p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through
-                them. You can easily go back to edit your page before publishing. After publishing your page, you can
-                revisit the page generator and switch to another theme. Your Page content will be preserved if it
-                remained markdown format.</p>
+            <p>
+                The latest binary file:<br>
+                <a href="https://github.com/lazydomino/swmic/zipball/master">zip file.</a>
+                <br>
+                <a href="https://github.com/lazydomino/swmic/tarball/master">tar.gz file.</a>
+                <br>
+                We use Intel compiler 2013 SP1 to compiler the source code.Please check your intel library version.
+            </p>
 
             <h3>
-                <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span
+                <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Installation and Usage</h3>
 
-            <p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your
-                repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages
-                support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll
-                makes it easy to create site-wide headers and footers without having to copy them across every page. It
-                also offers intelligent blog support and other advanced templating features.</p>
+            <p>
+                Three files must be provided to run swmic: the scoring matrix, query sequence
+                and the database. The query sequence and database should be in FASTA format.
+                <br>
+                For example, steps to run the query testRefSeq0511.txt to the database db.env_nr
+                with the default gap penalties and scoring matrix are as following:
+                <br>
+                <br>
+                <li>For native version:</li>
+                <br>
+                Step 1: Preproccess the database:
+                <br>
+                <code> ./makemicdb.out db.env_nr 244 </code>
+                <br>
+                [NOTE:] if your Xeon Phi has 61 cores, it is 244, if 60 cores it is 240.
+                <br>
+                Step 2: Upload the database and program to xeon phi:
+                <br>
+                <code>./scp db.env_nr.* blosum62.mat testRef* swmic.mic mic0:</code>
+                <br>
+                Step 3: Login xeon phi card:
+                <br>
+                <code>./ssh mic0</code>
+                <br>
+                Step 4: Run swmic on xeon phi:
+                <br>
+                <code>./swmic.mic  blosum62.mat testRefSeq0511.txt  db.env_nr</code>
+                <br>
+                <br>
+                <li>For offload version:</li>
+                <br>
+                Step 1: Preproccess the database:
+                <br>
+                <code>./makemicdb4.1.out db.env_nr</code>
+                <br>
+                Step 2: Run swmic:
+                <br>
+                <code>./swmic.mic  blosum62.mat testRefSeq1023.txt  db.env_nr</code>
+            </p>
 
             <h3>
-                <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span
+                <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Reference</h3>
 
             <p>Paper is under submission.</p>
 
             <h3>
-                <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span
+                <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-            <p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to
-                generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the
-                contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a
-                        href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a
-                        href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a
-                        href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+            <p>
+                <li>Author 1</li>
+                <li>Author 2</li>
+                <li>Authoe 3</li>
+            </p>
 
             <h3>
-                <a name="support-or-contact" class="anchor" href="#support-or-contact"><span
+                <a class="anchor"><span
                         class="octicon octicon-link"></span></a>Support or Contact</h3>
 
             <p>
