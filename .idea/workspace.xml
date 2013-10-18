@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="59a7932a-236a-4947-a740-23a907f159e5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="swmic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +37,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="33" selection-start="2521" selection-end="2521" vertical-scroll-proportion="0.56747407" vertical-offset="378" max-vertical-offset="2295">
+            <state line="114" column="22" selection-start="4581" selection-end="4581" vertical-scroll-proportion="0.3252595" vertical-offset="1428" max-vertical-offset="2295">
               <folding />
             </state>
           </provider>
@@ -310,7 +309,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="33" selection-start="2521" selection-end="2521" vertical-scroll-proportion="0.56747407" vertical-offset="378" max-vertical-offset="2295">
+        <state line="114" column="22" selection-start="4581" selection-end="4581" vertical-scroll-proportion="0.3252595" vertical-offset="1428" max-vertical-offset="2295">
           <folding />
         </state>
       </provider>
